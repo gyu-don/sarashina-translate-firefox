@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sarashina Translate の設定</title>
+    <link rel="stylesheet" href="../common/ui.css" />
+    <link rel="stylesheet" href="options.css" />
+    <script src="options.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header class="row">
+        <img src="../icons/icon.svg" width="32" height="32" alt="" />
+        <h1>Sarashina Translate の設定</h1>
+      </header>
+
+      <section>
+        <h2>API キー</h2>
+        <p class="muted">
+          <a href="https://chat.sarashina.ai/dashboard/api-keys" target="_blank" rel="noopener"
+            >Sarashina API コンソール</a
+          >
+          で発行した API キーを入力してください。キーはこのブラウザ内（storage.local）にのみ保存され、
+          <code>api.sarashina.ai</code> への翻訳リクエスト以外には送信されません。
+        </p>
+        <div class="row">
+          <input
+            type="password"
+            id="api-key"
+            class="grow"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="API キー"
+          />
+          <button id="toggle-key" type="button">表示</button>
+        </div>
+        <div class="row">
+          <button id="test-key" type="button">接続テスト</button>
+          <span id="test-result" class="muted"></span>
+        </div>
+      </section>
+
+      <section>
+        <h2>翻訳</h2>
+        <label class="field">
+          <span>ページ翻訳の既定の方向</span>
+          <select id="target-lang">
+            <option value="ja">英語 → 日本語</option>
+            <option value="en">日本語 → 英語</option>
+          </select>
+        </label>
+        <label class="field check">
+          <input type="checkbox" id="hover" />
+          <span>翻訳後、マウスを重ねると原文を表示する</span>
+        </label>
+        <label class="field">
+          <span>1 分あたりの最大リクエスト数 (RPM)</span>
+          <input type="number" id="rpm" min="1" max="600" step="1" />
+        </label>
+        <p class="muted">
+          Sarashina Translate API (sarashina3-translate) の既定のレート制限は 6 RPM です。 この拡張機能は複数の段落を 1
+          リクエスト（最大 5,000 文字）にまとめ、画面に表示された部分から順に翻訳します。
+          契約で上限が引き上げられている場合のみ変更してください。
+        </p>
+      </section>
+
+      <section>
+        <h2>常に翻訳するサイト</h2>
+        <ul id="hosts"></ul>
+        <p id="no-hosts" class="muted">まだありません。ポップアップの「このサイトを常に翻訳」から追加できます。</p>
+      </section>
+
+      <section>
+        <h2>キャッシュ</h2>
+        <p class="muted">一度翻訳した文はこのブラウザに保存され、再度 API を呼び出しません。</p>
+        <div class="row">
+          <span id="cache-count" class="grow"></span>
+          <button id="clear-cache" type="button">キャッシュを削除</button>
+        </div>
+      </section>
+
+      <footer class="row">
+        <span id="saved" class="ok"></span>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../common/ui.css" />
+    <link rel="stylesheet" href="popup.css" />
+    <script src="../common/lang.js"></script>
+    <script src="popup.js" defer></script>
+  </head>
+  <body>
+    <header class="row">
+      <img src="../icons/icon.svg" width="20" height="20" alt="" />
+      <h1 class="grow">Sarashina Translate</h1>
+      <a href="#" id="open-options" title="設定">設定</a>
+    </header>
+
+    <p id="no-key" class="banner" hidden>
+      APIキーが未設定です。<a href="#" id="open-options-2">設定画面</a>で Sarashina の APIキーを登録してください。
+    </p>
+
+    <section class="card" id="page-section">
+      <div class="row">
+        <label for="target" class="grow">ページを翻訳</label>
+        <select id="target">
+          <option value="ja">英語 → 日本語</option>
+          <option value="en">日本語 → 英語</option>
+        </select>
+      </div>
+      <div class="row actions">
+        <button id="translate" class="primary grow">このページを翻訳</button>
+        <button id="restore" class="grow" hidden>原文に戻す</button>
+      </div>
+      <label class="row check" id="always-row">
+        <input type="checkbox" id="always" />
+        <span>このサイト（<span id="host"></span>）を常に翻訳</span>
+      </label>
+      <p id="page-status" class="muted"></p>
+      <p id="page-unsupported" class="muted" hidden>このページは翻訳できません（Firefox の内部ページなど）。</p>
+    </section>
+
+    <section class="card">
+      <label for="text">テキストを翻訳（日⇔英は自動判定）</label>
+      <textarea id="text" rows="3" placeholder="翻訳したいテキストを入力"></textarea>
+      <div class="row">
+        <span id="direction" class="muted grow"></span>
+        <button id="translate-text">翻訳</button>
+      </div>
+      <div id="result" class="result" hidden></div>
+    </section>
+
+    <footer class="muted" id="quota"></footer>
+  </body>
+</html>

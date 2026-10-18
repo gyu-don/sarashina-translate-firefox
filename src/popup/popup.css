@@ -1,0 +1,54 @@
+body {
+  width: 360px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+header {
+  gap: 8px;
+}
+header a {
+  font-size: 12px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card label {
+  font-weight: 600;
+}
+.card label.check {
+  font-weight: normal;
+  font-size: 13px;
+}
+.actions button {
+  padding: 8px 12px;
+}
+.banner {
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--err);
+  font-size: 13px;
+}
+.result {
+  white-space: pre-wrap;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  max-height: 180px;
+  overflow: auto;
+}
+.card p {
+  margin: 0;
+}
+footer {
+  text-align: right;
+}

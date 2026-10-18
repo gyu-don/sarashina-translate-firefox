@@ -1,0 +1,52 @@
+{
+  "manifest_version": 2,
+  "name": "Sarashina Translate",
+  "version": "0.1.0",
+  "description": "Sarashina Translate API (SB Intuitions) でウェブページを日本語⇔英語に翻訳します。",
+  "homepage_url": "https://github.com/gyu-don/sarashina-translate-firefox",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "sarashina-translate@gyu-don.github.io",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": ["websiteContent"]
+      }
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    }
+  },
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  },
+  "permissions": ["activeTab", "storage", "unlimitedStorage", "menus", "https://api.sarashina.ai/*"],
+  "optional_permissions": ["*://*/*"],
+  "background": {
+    "page": "background/background.html",
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": "icons/icon.svg",
+    "default_title": "Sarashina Translate",
+    "default_popup": "popup/popup.html"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": { "default": "Alt+Shift+S" },
+      "description": "ポップアップを開く"
+    },
+    "toggle-translation": {
+      "suggested_key": { "default": "Alt+Shift+T" },
+      "description": "ページの翻訳 / 原文表示を切り替える"
+    },
+    "translate-selection": {
+      "suggested_key": { "default": "Alt+Shift+Y" },
+      "description": "選択したテキストを翻訳する"
+    }
+  }
+}
